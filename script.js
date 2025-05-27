@@ -59,6 +59,35 @@ document.addEventListener('DOMContentLoaded', ()=>{
     }
 
     function addDropEvents(){
-        
+        document.querySelectorAll('.task-list').forEach(list =>{
+            list.addEventListener('dragover', (e)=>e.preventDefault());
+            list.addEventListener('drop', (e)=>{
+                const draggingCard = document.querySelectorAll('dragging');
+                const index = draggingCard.dataset.dragIndex;
+                const newStatus = list.id;
+                tasks[index].newStatus = newStatus;
+                save();
+                render();
+            })
+        })
     }
+
+    function save(){
+        localStorage.setItem('kanbanTasks', JSON.stringify(tasks));
+    }
+
+    taskForm.addEventListener('submit', (e)=>{
+        e.preventDefault();
+        const title = titleInput.value.trim();
+        const description = descInput.value.trim();
+
+        if(title){
+            tasks.push({title, description, status: 'todo'});
+            titleInput.value = '';
+            descInput.value = '';
+            save();
+            render();
+        }
+    })
+    render();
 })
