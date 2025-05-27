@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Kanban de Tarefas</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+        <div class="app">
+            <header>
+                <h1>Quadro de Tarefas - Estilo Kanban</h1>
+                <form id="task-form">
+                    <input type="text" id="task-title" placeholder="Titulo da tarefa" required>
+                    <input type="text" id="task-desc" placeholder="Descricao">
+                    <button type="submit">Adicionar</button>
+                </form>
+
+            </header>
+
+            <main class="board">
+                <section class="column" data-status="todo">
+                    <h2>A Fazer (<span class="count">0</span>)</h2>
+                    <div class="task-list" id="todo"></div>
+                </section>
+
+                <section class="column" data-status="progress">
+                    <h2>Em Progresso (<span class="count">0</span>)</h2>
+                    <div class="task-list" id="progress"></div>
+                </section>
+
+                <section class="column" data-status="done">
+                    <h2>Concluido (<span class="count">0</span>)</h2>
+                    <div class="task-list" id="done"></div>
+                </section>
+            </main>
+
+            
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>
